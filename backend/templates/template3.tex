@@ -1,0 +1,141 @@
+%%%%
+% Dynamic version of Template 3 (MTeck style) - compatible with pdfgenerator.js
+%%%%
+\documentclass[letterpaper,10pt]{article}
+
+% Core packages
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{graphicx}
+
+% Fonts / encoding
+\usepackage[T1]{fontenc}
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% Colors (kept from original)
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Page layout tweaks
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS friendliness
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-5pt}
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+% ---------------------------
+% Backend-compatible macros
+% ---------------------------
+% Basic item macro
+\newcommand{\resumeItem}[1]{\item {#1}}
+
+% Subheading macro with 4 args (Title, duration/rights, subtitle, right-text)
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+  \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \textit{\footnotesize{#2}} \\
+    \footnotesize{\textit{#3}} & \footnotesize{#4}
+  \end{tabular*}
+  \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubHeadingList}{\begin{itemize}[leftmargin=*,labelsep=0mm]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=3ex, rightmargin=2ex, noitemsep,labelsep=1.2mm,itemsep=0mm]\small}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+
+% Document title block (dynamic)
+\newcommand{\documentTitleDyn}[4]{%
+  \begin{center}
+    {\Huge\color{accentTitle} #1} \vspace{8pt} \\
+    {\color{accentLine}\hrule} \vspace{4pt} \\
+    {\footnotesize #2 ~\textbar~ #3 ~\textbar~ #4} \\
+    {\color{accentLine}\hrule}
+  \end{center}
+}
+
+% Small helper for two-column skills if needed
+\newenvironment{twoColSkills}{\begin{multicols}{2}}{\end{multicols}}
+
+% ---------------------------
+% Document starts
+% ---------------------------
+\begin{document}
+
+% Header (dynamic)
+\documentTitleDyn{{{NAME}}}{\href{tel:{{PHONE}}}{{PHONE}}}{\href{mailto:{{EMAIL}}}{{EMAIL}}}{\href{{LINKEDIN}}{{LINKEDIN}} ~|~ \href{{GITHUB}}{{GITHUB}}}
+
+% Summary
+\tinysection{Summary}
+{{SUMMARY}}
+
+% Skills section
+\section{Skills}
+% the backend will supply either a multicolumn-friendly list or simple items
+\begin{twoColSkills}
+\begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+{{TECHNICAL_SKILLS}}
+\end{itemize}
+\end{twoColSkills}
+
+% Experience
+\section{Experience}
+\resumeSubHeadingList
+{{EXPERIENCE}}
+\resumeSubHeadingListEnd
+
+% Education
+\section{Education}
+\resumeSubHeadingList
+{{EDUCATION}}
+\resumeSubHeadingListEnd
+
+% Projects
+\section{Projects}
+\resumeSubHeadingList
+{{PROJECTS}}
+\resumeSubHeadingListEnd
+
+% Certifications
+\section{Certifications}
+\resumeSubHeadingList
+{{CERTIFICATIONS}}
+\resumeSubHeadingListEnd
+
+\end{document}
